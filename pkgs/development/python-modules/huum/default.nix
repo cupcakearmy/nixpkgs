@@ -41,7 +41,7 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Library for Huum saunas";
     homepage = "https://github.com/frwickst/pyhuum";
-    changelog = "https://github.com/frwickst/pyhuum/releases/tag/${version}";
+    changelog = "https://github.com/frwickst/pyhuum/releases/tag/${src.tag}";
     license = with licenses; [ mit ];
     maintainers = with maintainers; [ fab ];
   };
