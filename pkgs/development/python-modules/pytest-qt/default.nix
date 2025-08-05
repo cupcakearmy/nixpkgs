@@ -1,26 +1,25 @@
 {
   lib,
   buildPythonPackage,
-  fetchPypi,
+  fetchFromGitHub,
   setuptools-scm,
   pytest,
   pyqt5,
-  pythonOlder,
 }:
 
 buildPythonPackage rec {
   pname = "pytest-qt";
-  version = "4.4.0";
-  format = "setuptools";
+  version = "4.5.0";
+  pyproject = true;
 
-  disabled = pythonOlder "3.8";
-
-  src = fetchPypi {
-    inherit pname version;
-    hash = "sha256-dolhQqlApChTOQCNaSijbUvnSv7H5jRXfoQsnMXFaEQ=";
+  src = fetchFromGitHub {
+    owner = "pytest-dev";
+    repo = "pytest-qt";
+    tag = version;
+    hash = "sha256-ZCWWhd1/7qdSgGLNbsjPlxg24IFdqbNtLRktgMFVCJY=";
   };
 
-  nativeBuildInputs = [ setuptools-scm ];
+  build-system = [ setuptools-scm ];
 
   buildInputs = [ pytest ];
 
