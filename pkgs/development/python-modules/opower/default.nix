@@ -47,7 +47,7 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Module for getting historical and forecasted usage/cost from utilities that use opower.com";
     homepage = "https://github.com/tronikos/opower";
-    changelog = "https://github.com/tronikos/opower/releases/tag/v${version}";
+    changelog = "https://github.com/tronikos/opower/releases/tag/${src.tag}";
     license = licenses.asl20;
     maintainers = with maintainers; [ fab ];
   };
