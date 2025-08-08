@@ -8,6 +8,7 @@
   shapely,
   sqlalchemy,
   alembic,
+  pytest-benchmark,
   pytestCheckHook,
   pythonOlder,
 }:
@@ -38,9 +39,12 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [
     alembic
+    pytest-benchmark
     pytestCheckHook
   ]
   ++ optional-dependencies.shapely;
+
+  pytestFlags = [ "--benchmark-disable" ];
 
   disabledTestPaths = [
     # tests require live databases
