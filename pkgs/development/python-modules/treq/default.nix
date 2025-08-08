@@ -5,11 +5,12 @@
 
   # build-system
   incremental,
-  setuptools,
+  hatchling,
 
   # dependencies
   attrs,
   hyperlink,
+  multipart,
   requests,
   twisted,
 
@@ -29,13 +30,14 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [
     incremental
-    setuptools
+    hatchling
   ];
 
   propagatedBuildInputs = [
     attrs
     hyperlink
     incremental
+    multipart
     requests
     twisted
   ]
