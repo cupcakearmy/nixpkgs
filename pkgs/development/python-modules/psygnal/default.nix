@@ -7,6 +7,7 @@
   mypy-extensions,
   numpy,
   pydantic,
+  pytest-asyncio,
   pytestCheckHook,
   pythonOlder,
   toolz,
@@ -42,6 +43,7 @@ buildPythonPackage rec {
   nativeCheckInputs = [
     numpy
     pydantic
+    pytest-asyncio
     pytestCheckHook
     toolz
     wrapt
