@@ -3,6 +3,7 @@
   buildPythonPackage,
   pythonOlder,
   fetchFromGitHub,
+  fetchpatch,
   importlib-metadata,
   pyyaml,
   setuptools,
@@ -22,6 +23,13 @@ buildPythonPackage rec {
     tag = version;
     hash = "sha256-L5OTjllMUrpsKZbK+EHcqlua/6I4onJvRC3povbHgfY=";
   };
+
+  patches = [
+    (fetchpatch {
+      url = "https://github.com/Python-Markdown/markdown/commit/23c301de28e12426408656efdfa153b11d4ff558.patch";
+      hash = "sha256-85HP97iL1umG60jwUgfnHvKHYmws5FSL0xfgZF95aiQ=";
+    })
+  ];
 
   build-system = [ setuptools ];
 
