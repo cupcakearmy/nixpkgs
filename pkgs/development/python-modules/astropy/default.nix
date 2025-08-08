@@ -62,10 +62,6 @@ buildPythonPackage rec {
     hash = "sha256-yPJUMiKVsbjPJDA9bxVb9+/bbBKCiCuWbOMEDv+MU8U=";
   };
 
-  patches = [
-    ./test_z_at_value_numpyvectorize.patch
-  ];
-
   env = lib.optionalAttrs stdenv.cc.isClang {
     NIX_CFLAGS_COMPILE = "-Wno-error=unused-command-line-argument";
   };
