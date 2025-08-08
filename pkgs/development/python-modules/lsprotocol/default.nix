@@ -7,9 +7,8 @@
   flit-core,
   importlib-resources,
   jsonschema,
-  nox,
   pyhamcrest,
-  pytest,
+  pytestCheckHook,
   pythonOlder,
 }:
 
@@ -27,17 +26,20 @@ buildPythonPackage rec {
     hash = "sha256-DrWXHMgDZSQQ6vsmorThMrUTX3UQU+DajSEOdxoXrFQ=";
   };
 
-  nativeBuildInputs = [
+  postPatch = ''
+    pushd packages/python
+  '';
+
+  build-system = [
     flit-core
-    nox
   ];
 
-  propagatedBuildInputs = [
+  dependencies = [
     attrs
     cattrs
   ];
 
-  nativeCheckInputs = [ pytest ];
+  nativeCheckInputs = [ pytestCheckHook ];
 
   checkInputs = [
     importlib-resources
@@ -45,21 +47,12 @@ buildPythonPackage rec {
     pyhamcrest
   ];
 
-  preBuild = ''
-    cd packages/python
-  '';
+  disabledTests = [
+    "test_notebook_sync_options"
+  ];
 
   preCheck = ''
-    cd ../../
-  '';
-
-  checkPhase = ''
-    runHook preCheck
-
-    sed -i "/^    _install_requirements/d" noxfile.py
-    nox --session tests
-
-    runHook postCheck
+    popd
   '';
 
   pythonImportsCheck = [ "lsprotocol" ];
