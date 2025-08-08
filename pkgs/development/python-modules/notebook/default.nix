@@ -54,7 +54,7 @@ buildPythonPackage rec {
 
   offlineCache = yarn-berry_3.fetchYarnBerryDeps {
     inherit src missingHashes;
-    hash = "sha256-S0lnRJ+9F1RhymlAOxo3sEJJrHYo5IWeWn80obcgVlM=";
+    hash = "sha256-nRaWzr5Q904KojfK0mPgLX9be82axb8Aab0SJULE7RU=";
   };
 
   build-system = [
